@@ -60,3 +60,15 @@
 **SRI Bus**： **System Resource Interconnect BUS**（系统资源连接器总线）
   - **SRI**（**System Resource Interconnect**）是AURIX™ TC37x中的**高性能内部总线**，连接CPU（TriCore™）、存储器（SRAM、Flash）、外设（CAN、GPIO）和DMA等模块
   - **Infineon-AURIX_TC37x-UserManual-v02_00-EN**用户手册P11有BUS Faberic SRI 的 **address map**
+
+**CHSW**：**Check Status Word**（状态检查标识）
+  - **CHSW**是**Check Status Word**的缩写，表示TC37x在启动或复位后，通过硬件自检（Hardware Self-Test）验证系统状态的结果。
+  - 自检由AURIX Firmware或SSW（Start-up Software）执行，**检查关键模块（如CPU、存储器、时钟、SMU）是否正常**，确保芯片满足ISO 26262 ASIL-D功能安全要求。
+  - **检查结果存储在SCU_STMEMx寄存器中**，供BSW软件（MCAL、AUTOSAR OS）读取，确认系统是否“ALL CHECKS PASSED”。
+
+**SCU_STMEMx**：**System Control Unit_Status Memory** （系统控制单元的状态内存）
+  - **SCU_STMEMx**寄存器是TC37x的System Control Unit（SCU）模块中的状态存储寄存器（Status Memory Registers）。
+  - 作用：
+        存储启动自检结果（CHSW），每个寄存器保存32位状态值（表格中的值，如A030FB1FH）。
+        不同复位类型（Cold power-on、Warm power-on、System reset、Application reset）和条件（如CCUCON5.GETHDIV）产生不同值。
+        BSW软件读取这些寄存器，判断芯片是否安全启动，是否可运行TCU应用（如CAN通信）。
