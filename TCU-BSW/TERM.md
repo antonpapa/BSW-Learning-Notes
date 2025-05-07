@@ -9,14 +9,15 @@
 
 **DSPR**  : **Data Scratch Pad SRAM**(数据暂存静态随机访问存储器)
 
-|特性	      |PSPR	                     |DSPR                     |
-|全称         |	Program Scratch Pad SRAM|	Data Scratch Pad SRAM  |
-|用途         |	存储程序代码（指令、函数）|	存储数据（变量、缓冲区、栈）|
-|大小（TC37x）|	64KB/CPU             |	240KB (CPU0/1), 96KB (else)|
-|地址         |	0x70100000+	          |0x70000000+                 |
-|BSW场景     |	MCAL函数（如Can_Init）|	CAN变量（如gear=0x01）       |
-|速度        |	高速，零等待周期      |	高速，零等待周期              |
-|专属性      |	每个CPU独占          |	每个CPU独占                  |
+|特性	         |PSPR	                    |DSPR                        |
+|-------------|---------------------------|----------------------------|
+|全称         |Program Scratch Pad SRAM   |Data Scratch Pad SRAM       |
+|用途         |存储程序代码（指令、函数）   |存储数据（变量、缓冲区、栈）   |
+|大小（TC37x）|64KB/CPU                   |240KB (CPU0/1), 96KB (else) |
+|地址        |0x70100000+	                |0x70000000+                 |
+|BSW场景     |MCAL函数（如Can_Init）       |CAN变量（如gear=0x01）      |
+|速度        |高速，零等待周期             |高速，零等待周期             |
+|专属性      |每个CPU独占                 |每个CPU独占                  |
 
 **DCACHE**: **Data Cache**（数据缓存）->高速存储数据的缓存内存
   - **加速数据访问**：DCACHE存储频繁访问的数据（如MCAL变量、gear=0x01），比从主存储器（SRAM、Flash）读取快，减少CPU等待时间。
