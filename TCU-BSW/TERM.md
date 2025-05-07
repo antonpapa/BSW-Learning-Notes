@@ -67,8 +67,16 @@
   - **检查结果存储在SCU_STMEMx寄存器中**，供BSW软件（MCAL、AUTOSAR OS）读取，确认系统是否“ALL CHECKS PASSED”。
 
 **SCU_STMEMx**：**System Control Unit_Status Memory** （系统控制单元的状态内存）
-  - **SCU_STMEMx**寄存器是TC37x的System Control Unit（SCU）模块中的状态存储寄存器（Status Memory Registers）。
+  - **SCU_STMEMx**寄存器是TC37x的System Control Unit（SCU）模块中的状态内存寄存器（Status Memory Registers）。
   - 作用：
         存储启动自检结果（CHSW），每个寄存器保存32位状态值（表格中的值，如A030FB1FH）。
         不同复位类型（Cold power-on、Warm power-on、System reset、Application reset）和条件（如CCUCON5.GETHDIV）产生不同值。
         BSW软件读取这些寄存器，判断芯片是否安全启动，是否可运行TCU应用（如CAN通信）。
+
+**DOM**：**Domain Control**
+  - **DOM**（**Domain Control**）是AURIX™ TC37x中的一个片上模块，负责管理特定存储器区域或外设的访问权限和数据传输。
+  - 在TC37x中，DOM0是一个特定的域（Domain），用于控制与SRI总线（System Resource Interconnect）和**OLDA（Online Data Acquisition）**相关的访问。
+  - 作用：
+        - 确保安全访问（符合ISO 26262 ASIL-D），防止未经授权的模块（如CPU、DMA）访问敏感区域。
+        - 管理SRI总线（高速内部总线）和OLDA存储器（本地数据区）的连接。
+        - 支持HSM（Hardware Security Module）、调试（OCDS）、多核访问等场景。

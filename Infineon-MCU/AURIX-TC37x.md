@@ -49,3 +49,19 @@
 |32     |32位宽度总线访问允许并执行                                       |
 |Access |允许总线访问并执行                                               |
 
+### 1.3.系统资源连接器总线
+  - **SRI**（**System Resource Interconnect**）是AURIX™ TC37x中的**高性能内部总线**，连接CPU（TriCore™）、存储器（SRAM、Flash）、外设（CAN、GPIO）和DMA等模块。
+它像TC37x的“高速公路”，允许“总线主控”（Bus Masters，如CPU、DMA）快速访问存储器和寄存器。
+
+  - Table 2（**Address Map as seen by Bus Masters on Bus SRI**）是SRI总线的内存映射（MEMMAP），定义了存储器和外设的地址范围，以及读写权限。
+    - 见**Infineon-AURIX_TC37x-UserManual-v02_00-EN**用户手册**P11**。
+
+### 1.4.SCU_STMEMx寄存器相关内容
+  - 该寄存器存储**系统控制单元的状态标识**，而**Table5**展示了各种设备复位之后，如果所有检查都通过了，那么系统控制单元中的 SCU_STMEM3 到 SCU_STMEM6 寄存器中将分别保存什么值。这些值可以用于调试或验证系统启动是否正常。
+    - 见**Infineon-AURIX_TC37x-UserManual-v02_00-EN**用户手册**P22**。
+
+### 1.5.DOM0配置参数定义访问权限、地址范围和接口数量
+  - DOM（Domain Control）是AURIX™ TC37x中的片上模块，负责管理特定存储器区域或外设的访问权限和数据传输。
+  - 在TC37x中，DOM0是一个特定的域（Domain），用于控制与SRI总线（System Resource Interconnect）和**OLDA（Online Data Acquisition）**相关的访问。
+  - 生活化比喻：DOM0是TC37x的“门卫”，管理“高速公路”（SRI）和“数据仓库”（OLDA）的访问。Table 7是“门禁规则”，规定谁（CPU、HSM）、何时（Endinit）、如何（Supervisor Mode）能进。
+   - 见**Infineon-AURIX_TC37x-UserManual-v02_00-EN**用户手册**P23**。
