@@ -14,7 +14,7 @@
 |全称         |Program Scratch Pad SRAM   |Data Scratch Pad SRAM       |
 |用途         |存储程序代码（指令、函数）   |存储数据（变量、缓冲区、栈）   |
 |大小（TC37x）|64KB/CPU                   |240KB (CPU0/1), 96KB (else) |
-|地址        |0x70100000+	                |0x70000000+                 |
+|地址        |0x70100000+	                |0x70000000+                |
 |BSW场景     |MCAL函数（如Can_Init）       |CAN变量（如gear=0x01）      |
 |速度        |高速，零等待周期             |高速，零等待周期             |
 |专属性      |每个CPU独占                 |每个CPU独占                  |
