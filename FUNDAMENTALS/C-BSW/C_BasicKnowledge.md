@@ -26,11 +26,11 @@
 
 - **()括号**
   - () 圆括号：改变运算优先级、函数调用、宏定义、类型转换
-  示例： uint16_t result = (uint16_t)((uint32_t)val1 * val2) >> 8;(强制类型转换与防溢出)
+  - 示例： uint16_t result = (uint16_t)((uint32_t)val1 * val2) >> 8;(强制类型转换与防溢出)
   MISRA:强制类型转换必须加括号。
 - **[] 下标**
   - [] 下标：数组访问(本质就是指针+偏移)
-  示例：uint8_t buffer[10];
+  - 示例：uint8_t buffer[10];
   buffer[PMIV_VOUT_REG] = new_val;
 - **->\. 从属运算符**
   - 用于直接访问结构体成员变量
@@ -48,17 +48,17 @@
   ```
 - **! 逻辑非**
   - ! 逻辑非运算符表示对逻辑取反（!0 == 1,!非0数 == 0）
-  示例： if (!flag){} 等价于 if (flag == 0){}
+  - 示例： if (!flag){} 等价于 if (flag == 0){}
 - **~ 按位取反**
   - ~ 按位取反符号表示按每个比特位取反
-  示例：uint8_t reg = 0x0F; reg = ~reg; 则此时reg == 0xFF
+  - 示例：uint8_t reg = 0x0F; reg = ~reg; 则此时reg == 0xFF
 - **++ 自增、-- 自减**、
   - MISRA ：尽量在开发中避免使用++、--运算符
 - **& 取地址运算符**
   - & 取地址运算符用于返回变量的内存地址
-  示例：NvM_WriteBlock(blockVal, &ramMirror);
+  - 示例：NvM_WriteBlock(blockVal, &ramMirror);
 - **解引用运算符（ * ）**
-  示例：unint8_t * p = & val; *p = 0xFF;则此时val == 0xFF
+  - 示例：unint8_t * p = & val; *p = 0xFF;则此时val == 0xFF
 - **+ 、- 、*、/ 加减乘除数学运算符**
   - 不做赘述
 - **==、>、< 关系运算符，判断等于大于小于**
